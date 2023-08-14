@@ -1,21 +1,17 @@
 @Smoke @Regression
-Feature: Login Page Test Suite
+Feature: Login Page Tests
+
+  Background:
+    Given user is on the login page
 
   @Smoke
-  Scenario Outline: Login page content verification
-    Given user is on the login page
-    Then user can see the "<item>" by default
-
-    Examples:
-      | item     |
-      | Welcome  |
-      | Username |
-      | Password |
-      | Login    |
+  Scenario: Login page content verification
+    Then user can see the Welcome title by default
+    And user can see Username and Password fields
+    And user can see Login button
 
   @Smoke
   Scenario Outline: Login to the system with incorrect credentials
-    Given user is on the login page
     When user enter "<username>" and "<password>"
     And user clicks on Login button
     Then user is not able to login
@@ -28,11 +24,10 @@ Feature: Login Page Test Suite
 
   @Smoke
   Scenario Outline: Login to the system with correct credentials
-    Given user is on the login page
     When user enter "<username>" and "<password>"
     And user clicks on Login button
     Then user is able to login
 
     Examples:
       | username | password |
-      | admin    | admin123 |
+      | admin    | admin@123 |
