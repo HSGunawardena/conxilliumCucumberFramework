@@ -11,6 +11,7 @@
     <properties>
         <maven.compiler.source>14</maven.compiler.source>
         <maven.compiler.target>14</maven.compiler.target>
+        <webdrivermanager.version>5.4.1</webdrivermanager.version>
     </properties>
 
     <dependencies>
@@ -20,7 +21,6 @@
             <artifactId>cucumber-java</artifactId>
             <version>7.13.0</version>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
             <groupId>junit</groupId>
@@ -28,7 +28,6 @@
             <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
         <dependency>
             <groupId>io.cucumber</groupId>
@@ -36,6 +35,20 @@
             <version>7.13.0</version>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.11.0</version>
+        </dependency>
+        <!-- Web Driver Manager -->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${webdrivermanager.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
 
     </dependencies>
 
