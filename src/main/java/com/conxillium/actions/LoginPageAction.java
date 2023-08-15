@@ -1,36 +1,36 @@
 package com.conxillium.actions;
 
-import com.conxillium.locators.LoginPageLocators;
+import com.conxillium.locators.AddNewRecordPageAction;
 import com.conxillium.utils.HelperClass;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 public class LoginPageAction {
-    LoginPageLocators loginPageLocators = null;
+    AddNewRecordPageAction addNewRecordPageAction = null;
 
     public LoginPageAction() {
-        this.loginPageLocators = new LoginPageLocators();
+        this.addNewRecordPageAction = new AddNewRecordPageAction();
 
-        PageFactory.initElements(HelperClass.getDriver(), loginPageLocators);
+        PageFactory.initElements(HelperClass.getDriver(), addNewRecordPageAction);
     }
 
     public WebElement getPageTitle() {
-        WebElement pageTitle = loginPageLocators.pageTitle;
+        WebElement pageTitle = addNewRecordPageAction.pageTitle;
         return pageTitle;
     }
 
     public WebElement getUserNameField() {
-        WebElement userName = loginPageLocators.userName;
+        WebElement userName = addNewRecordPageAction.userName;
         return userName;
     }
 
     public WebElement getPasswordField() {
-        WebElement password = loginPageLocators.password;
+        WebElement password = addNewRecordPageAction.password;
         return password;
     }
 
     public WebElement getLoginButton() {
-        WebElement loginButton = loginPageLocators.loginButton;
+        WebElement loginButton = addNewRecordPageAction.loginButton;
         return loginButton;
     }
 }
