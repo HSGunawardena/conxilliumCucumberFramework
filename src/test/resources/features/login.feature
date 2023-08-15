@@ -1,16 +1,14 @@
-@Smoke @Regression
+@Smoke @Regression @Login
 Feature: Login Page Tests
 
   Background:
-    Given user is on the login page
+    Given user is on the Login page
 
-  @Smoke
   Scenario: Login page content verification
     Then user can see the Welcome title by default
     And user can see Username and Password fields
     And user can see Login button
 
-  @Smoke
   Scenario Outline: Login to the system with incorrect credentials
     When user enter "<username>" and "<password>"
     And user clicks on Login button
