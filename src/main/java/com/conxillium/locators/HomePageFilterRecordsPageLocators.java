@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class UserRecordPageLocators {
+public class HomePageFilterRecordsPageLocators {
     @FindBy(tagName = "h2")
     public WebElement pageTitle;
 
