@@ -12,7 +12,7 @@ import java.util.List;
 import static com.conxillium.utils.HelperClass.getDriver;
 
 public class AddNewRecordPageAction {
-    AddNewRecordPageLocators addNewRecordPageLocators = null;
+    AddNewRecordPageLocators addNewRecordPageLocators;
     Select countryDropDown = null;
 
     public AddNewRecordPageAction() {

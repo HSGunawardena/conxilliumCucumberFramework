@@ -9,9 +9,6 @@ public class AddNewRecordPageLocators {
     @FindBy(tagName = "h2")
     public WebElement pageTitle;
 
-    @FindBy(xpath = "//a[contains(text(), 'Add New')]")
-    public WebElement addNewButton;
-
     @FindBy(id = "fullName")
     public WebElement fullName;
 
