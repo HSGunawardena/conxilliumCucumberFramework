@@ -19,7 +19,10 @@ public class AddNewRecordPageSteps {
 
     @And("user is on Add Data page")
     public void userIsOnAddDataPage() {
-        Assert.assertTrue("URL does not contain /AddressManager/add", getDriver().getCurrentUrl().contains("/AddressManager/add"));
+        Assert.assertTrue(
+                "URL does not contain /AddressManager/add",
+                getDriver().getCurrentUrl().contains("/AddressManager/add")
+        );
         Assert.assertTrue(addNewRecordPageAction.getPageTitle().getText().contains("Add Data"));
     }
 
@@ -27,24 +30,54 @@ public class AddNewRecordPageSteps {
     public void userCanSeeTheFieldAndItSEmpty(String field) {
         switch (field) {
             case "Full Name":
-                Assert.assertTrue("Full Name field is not displayed", addNewRecordPageAction.getFullName().isDisplayed());
-                Assert.assertTrue("Full Name field is not empty", addNewRecordPageAction.getFullName().getAttribute("value").isEmpty());
+                Assert.assertTrue(
+                        "Full Name field is not displayed",
+                        addNewRecordPageAction.getFullName().isDisplayed()
+                );
+                Assert.assertTrue(
+                        "Full Name field is not empty",
+                        addNewRecordPageAction.getFullName().getAttribute("value").isEmpty()
+                );
                 break;
             case "Age":
-                Assert.assertTrue("Age field is not displayed", addNewRecordPageAction.getAge().isDisplayed());
-                Assert.assertTrue("Age field is not empty", addNewRecordPageAction.getAge().getAttribute("value").isEmpty());
+                Assert.assertTrue(
+                        "Age field is not displayed",
+                        addNewRecordPageAction.getAge().isDisplayed()
+                );
+                Assert.assertTrue(
+                        "Age field is not empty",
+                        addNewRecordPageAction.getAge().getAttribute("value").isEmpty()
+                );
                 break;
             case "Address":
-                Assert.assertTrue("Address field is not displayed", addNewRecordPageAction.getAddress().isDisplayed());
-                Assert.assertTrue("Address field is not empty", addNewRecordPageAction.getAddress().getAttribute("value").isEmpty());
+                Assert.assertTrue(
+                        "Address field is not displayed",
+                        addNewRecordPageAction.getAddress().isDisplayed()
+                );
+                Assert.assertTrue(
+                        "Address field is not empty",
+                        addNewRecordPageAction.getAddress().getAttribute("value").isEmpty()
+                );
                 break;
             case "Birthday":
-                Assert.assertTrue("Birthday field is not displayed", addNewRecordPageAction.getBirthday().isDisplayed());
-                Assert.assertTrue("Birthday field is not empty", addNewRecordPageAction.getBirthday().getAttribute("value").isEmpty());
+                Assert.assertTrue(
+                        "Birthday field is not displayed",
+                        addNewRecordPageAction.getBirthday().isDisplayed()
+                );
+                Assert.assertTrue(
+                        "Birthday field is not empty",
+                        addNewRecordPageAction.getBirthday().getAttribute("value").isEmpty()
+                );
                 break;
             case "Country":
-                Assert.assertTrue("Country field is not displayed", addNewRecordPageAction.getCountry().isDisplayed());
-                Assert.assertTrue("Country field is not empty", addNewRecordPageAction.getCountry().getAttribute("value").isEmpty());
+                Assert.assertTrue(
+                        "Country field is not displayed",
+                        addNewRecordPageAction.getCountry().isDisplayed()
+                );
+                Assert.assertTrue(
+                        "Country field is not empty",
+                        addNewRecordPageAction.getCountry().getAttribute("value").isEmpty()
+                );
                 break;
             case "Expertise":
                 List<WebElement> expertiseElements = addNewRecordPageAction.getExpertise();
@@ -76,33 +109,40 @@ public class AddNewRecordPageSteps {
     }
 
     @When("user fill the {string}, {string}, {string}, {string}, {string}, {string} and {string}")
-    public void userFillTheAnd(String fullName, String age, String address, String birthday, String country, String expertise, String gender) {
+    public void userFillTheAnd(
+            String fullName,
+            String age,
+            String address,
+            String birthday,
+            String country,
+            String expertise,
+            String gender) {
         addNewRecordPageAction.getFullName().sendKeys(fullName);
         addNewRecordPageAction.getAge().sendKeys(age);
         addNewRecordPageAction.getAddress().sendKeys(address);
         addNewRecordPageAction.getBirthday().sendKeys(birthday);
         addNewRecordPageAction.setCountry(country);
-        List<WebElement> expertiesElements = addNewRecordPageAction.getExpertise();
+        List<WebElement> expertiseElements = addNewRecordPageAction.getExpertise();
         switch (expertise) {
             case "ANGULAR":
-                expertiesElements.get(0).click();
-                expertiesElements.get(0).isSelected();
+                expertiseElements.get(0).click();
+                expertiseElements.get(0).isSelected();
                 break;
             case "JAVA":
-                expertiesElements.get(1).click();
-                expertiesElements.get(1).isSelected();
+                expertiseElements.get(1).click();
+                expertiseElements.get(1).isSelected();
                 break;
             case "C#":
-                expertiesElements.get(2).click();
-                expertiesElements.get(2).isSelected();
+                expertiseElements.get(2).click();
+                expertiseElements.get(2).isSelected();
                 break;
             case "GIT":
-                expertiesElements.get(3).click();
-                expertiesElements.get(3).isSelected();
+                expertiseElements.get(3).click();
+                expertiseElements.get(3).isSelected();
                 break;
             case "HTML":
-                expertiesElements.get(4).click();
-                expertiesElements.get(4).isSelected();
+                expertiseElements.get(4).click();
+                expertiseElements.get(4).isSelected();
                 break;
         }
         List<WebElement> genderElements = addNewRecordPageAction.getGender();
@@ -125,11 +165,26 @@ public class AddNewRecordPageSteps {
 
     @Then("all the fields should be reset to default values")
     public void allTheFieldsShouldBeResetToDefaultValues() {
-        Assert.assertTrue("Full Name field is not reset", addNewRecordPageAction.getFullName().getAttribute("value").isEmpty());
-        Assert.assertTrue("Age field is not reset", addNewRecordPageAction.getAge().getAttribute("value").isEmpty());
-        Assert.assertTrue("Address field is not reset", addNewRecordPageAction.getAddress().getAttribute("value").isEmpty());
-        Assert.assertTrue("Birthday field is not reset", addNewRecordPageAction.getBirthday().getAttribute("value").isEmpty());
-        Assert.assertTrue("Country field is not reset", addNewRecordPageAction.getCountry().getAttribute("value").isEmpty());
+        Assert.assertTrue(
+                "Full Name field is not reset",
+                addNewRecordPageAction.getFullName().getAttribute("value").isEmpty()
+        );
+        Assert.assertTrue(
+                "Age field is not reset",
+                addNewRecordPageAction.getAge().getAttribute("value").isEmpty()
+        );
+        Assert.assertTrue(
+                "Address field is not reset",
+                addNewRecordPageAction.getAddress().getAttribute("value").isEmpty()
+        );
+        Assert.assertTrue(
+                "Birthday field is not reset",
+                addNewRecordPageAction.getBirthday().getAttribute("value").isEmpty()
+        );
+        Assert.assertTrue(
+                "Country field is not reset",
+                addNewRecordPageAction.getCountry().getAttribute("value").isEmpty()
+        );
         List<WebElement> expertiseElements = addNewRecordPageAction.getExpertise();
         for (WebElement expertise : expertiseElements) {
             Assert.assertTrue(expertise.isDisplayed());

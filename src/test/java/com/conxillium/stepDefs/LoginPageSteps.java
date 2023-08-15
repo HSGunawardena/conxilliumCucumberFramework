@@ -52,11 +52,17 @@ public class LoginPageSteps {
     public void userIsNotAbleToLogin() {
         getDriver().switchTo().alert().getText().contains("Invalid Credentials!");
         getDriver().switchTo().alert().dismiss();
-        Assert.assertTrue("URL does not contain /AddressManager/login", getDriver().getCurrentUrl().contains("/AddressManager/login"));
+        Assert.assertTrue(
+                "URL does not contain /AddressManager/login",
+                getDriver().getCurrentUrl().contains("/AddressManager/login")
+        );
     }
 
     @Then("user is able to login")
     public void userIsAbleToLogin() {
-        Assert.assertTrue("URL does not contain /AddressManager/view", getDriver().getCurrentUrl().contains("/AddressManager/view"));
+        Assert.assertTrue(
+                "URL does not contain /AddressManager/view",
+                getDriver().getCurrentUrl().contains("/AddressManager/view")
+        );
     }
 }

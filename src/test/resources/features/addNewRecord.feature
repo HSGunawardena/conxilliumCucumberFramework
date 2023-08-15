@@ -11,7 +11,6 @@ Feature: Add New Records
 
   Scenario Outline: Form default content verification
     Then user can see the "<field>" field and it's empty
-
     Examples:
       | field     |
       | Full Name |
@@ -24,7 +23,6 @@ Feature: Add New Records
 
   Scenario Outline: Form buttons verification
     Then user can see the "<button>" button
-
     Examples:
       | button |
       | Submit |
@@ -35,7 +33,6 @@ Feature: Add New Records
     Then the address field error is not available
     And user clicks on Submit button
     Then the submission should be unsuccessful
-
     Examples:
       | fullName           | age | address | birthday   | country   | expertise | gender |
       | Saliya Gunawardena | 34  |         | 1991-10-31 | Sri Lanka | JAVA      | MALE   |
@@ -44,7 +41,6 @@ Feature: Add New Records
     When user fill the "<fullName>", "<age>", "<address>", "<birthday>", "<country>", "<expertise>" and "<gender>"
     And user clicks on Reset button
     Then all the fields should be reset to default values
-
     Examples:
       | fullName           | age | address      | birthday   | country   | expertise | gender |
       | Saliya Gunawardena | 34  | 427, Gampaha | 1991-10-31 | Sri Lanka | JAVA      | MALE   |
@@ -53,7 +49,6 @@ Feature: Add New Records
     When user fill the "<fullName>", "<age>", "<address>", "<birthday>", "<country>", "<expertise>" and "<gender>"
     And user clicks on Submit button
     Then the new record with "<fullName>" is created
-
     Examples:
       | fullName           | age | address      | birthday   | country   | expertise | gender |
       | Saliya Gunawardena | 34  | 427, Gampaha | 1991-10-31 | Sri Lanka | JAVA      | MALE   |
