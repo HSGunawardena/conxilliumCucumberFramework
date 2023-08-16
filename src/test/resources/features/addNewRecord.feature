@@ -9,7 +9,7 @@ Feature: Add New Records
     And user clicks on Add New button
     And user is on Add Data page
 
-  Scenario Outline: Form default content verification
+  Scenario Outline: Verify the default status of the fields on the Add New Form
     Then user can see the "<field>" field and it's empty
     Examples:
       | field     |
@@ -21,14 +21,14 @@ Feature: Add New Records
       | Expertise |
       | Gender    |
 
-  Scenario Outline: Form buttons verification
+  Scenario Outline: Verify the buttons availability below the Add New Form
     Then user can see the "<button>" button
     Examples:
       | button |
       | Submit |
       | Reset  |
 
-  Scenario Outline: Mandatory field verification for address field
+  Scenario Outline: Verify the required address field
     When user fill the "<fullName>", "<age>", "<address>", "<birthday>", "<country>", "<expertise>" and "<gender>"
     Then the address field error is not available
     And user clicks on Submit button
@@ -37,7 +37,7 @@ Feature: Add New Records
       | fullName           | age | address | birthday   | country   | expertise | gender |
       | Saliya Gunawardena | 34  |         | 1991-10-31 | Sri Lanka | JAVA      | MALE   |
 
-  Scenario Outline: Reset button should clear the form
+  Scenario Outline: Verify if the reset button clears the form
     When user fill the "<fullName>", "<age>", "<address>", "<birthday>", "<country>", "<expertise>" and "<gender>"
     And user clicks on Reset button
     Then all the fields should be reset to default values
@@ -45,7 +45,7 @@ Feature: Add New Records
       | fullName           | age | address      | birthday   | country   | expertise | gender |
       | Saliya Gunawardena | 34  | 427, Gampaha | 1991-10-31 | Sri Lanka | JAVA      | MALE   |
 
-  Scenario Outline: Submit a new record
+  Scenario Outline: Verify submitting a new record
     When user fill the "<fullName>", "<age>", "<address>", "<birthday>", "<country>", "<expertise>" and "<gender>"
     And user clicks on Submit button
     Then the new record with "<fullName>" is created

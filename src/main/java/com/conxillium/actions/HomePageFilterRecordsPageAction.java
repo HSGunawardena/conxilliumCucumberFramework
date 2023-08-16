@@ -2,6 +2,7 @@ package com.conxillium.actions;
 
 import com.conxillium.locators.HomePageFilterRecordsPageLocators;
 import com.conxillium.utils.HelperClass;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
@@ -36,6 +37,11 @@ public class HomePageFilterRecordsPageAction {
     public List<WebElement> getDataTableRows() {
         List<WebElement> dataTableRows = homePageFilterRecordsPageLocators.dataTableRows;
         return dataTableRows;
+    }
+
+    public WebElement getLastTableRow(){
+        WebElement lastTableRow = homePageFilterRecordsPageLocators.lastTableRow;
+        return lastTableRow;
     }
 
     public WebElement getFilterFullNameField() {

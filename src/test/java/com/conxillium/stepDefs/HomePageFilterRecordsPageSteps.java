@@ -6,7 +6,10 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 import static com.conxillium.utils.HelperClass.getDriver;
@@ -84,31 +87,30 @@ public class HomePageFilterRecordsPageSteps {
 
     @When("user click on {string} on navigation bar")
     public void userClickOnOnNavigationBar(String item) {
-        switch (item) {
-            case "Address Manager":
-                homePageFilterRecordsPageAction.getNavigationBarAddressManagerTitle().click();
-                break;
-            case "Home":
-                homePageFilterRecordsPageAction.getNavigationBarHome().click();
-                Assert.assertTrue(
-                        "User was not taken to Home page",
-                        getDriver().getCurrentUrl().contains("/AddressManager/view")
-                );
-                break;
-            case "Add":
-                homePageFilterRecordsPageAction.getNavigationBarAdd().click();
-                Assert.assertTrue(
-                        "User was not taken to Add page",
-                        getDriver().getCurrentUrl().contains("/AddressManager/add")
-                );
-                break;
-            case "View":
-                homePageFilterRecordsPageAction.getNavigationBarView().click();
-                Assert.assertTrue(
-                        "User was not taken to View page",
-                        getDriver().getCurrentUrl().contains("/AddressManager/view")
-                );
-                break;
+        if (item.equals("Address Manager")) {
+            homePageFilterRecordsPageAction.getNavigationBarAddressManagerTitle().click();
+            Assert.assertTrue(
+                    "User was not taken to Home page by" + item,
+                    getDriver().getCurrentUrl().contains("/AddressManager/view")
+            );
+        } else if (item.equals("Home")) {
+            homePageFilterRecordsPageAction.getNavigationBarHome().click();
+            Assert.assertTrue(
+                    "User was not taken to Home page by" + item,
+                    getDriver().getCurrentUrl().contains("/AddressManager/view")
+            );
+        } else if (item.equals("Add")) {
+            homePageFilterRecordsPageAction.getNavigationBarAdd().click();
+            Assert.assertTrue(
+                    "User was not taken to Add page by" + item,
+                    getDriver().getCurrentUrl().contains("/AddressManager/add")
+            );
+        } else if (item.equals("View")) {
+            homePageFilterRecordsPageAction.getNavigationBarView().click();
+            Assert.assertTrue(
+                    "User was not taken to View page by" + item,
+                    getDriver().getCurrentUrl().contains("/AddressManager/view")
+            );
         }
     }
 
@@ -124,14 +126,10 @@ public class HomePageFilterRecordsPageSteps {
     public void userEnterToFilterFiled(String value, String category) {
         final int rowCount = homePageFilterRecordsPageAction.getDataTableRows().size();
         Assert.assertTrue(rowCount == 10);
-        System.out.println(category);
-        switch (category) {
-            case "name":
-                homePageFilterRecordsPageAction.getFilterFullNameField().sendKeys(value);
-                break;
-            case "country":
-                homePageFilterRecordsPageAction.getFilterCountry().sendKeys(value);
-                break;
+        if (category.equals("name")) {
+            homePageFilterRecordsPageAction.getFilterFullNameField().sendKeys(value);
+        } else if (category.equals("country")) {
+            homePageFilterRecordsPageAction.getFilterCountry().sendKeys(value);
         }
     }
 
@@ -142,6 +140,8 @@ public class HomePageFilterRecordsPageSteps {
 
     @Then("user {string} is filtered in the table")
     public void userIsFilteredInTheTable(String value) {
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(3));
+        wait.until(ExpectedConditions.invisibilityOf(homePageFilterRecordsPageAction.getLastTableRow()));
         final int rowCount = homePageFilterRecordsPageAction.getDataTableRows().size();
         Assert.assertTrue("Row count was not 1", rowCount == 1);
         List<WebElement> getNames = homePageFilterRecordsPageAction.getDataTableRows();
@@ -156,13 +156,10 @@ public class HomePageFilterRecordsPageSteps {
 
     @When("user selects {string} header filter button")
     public void userSelectsHeaderFilterButton(String header) {
-        switch (header) {
-            case "Full Name":
-                homePageFilterRecordsPageAction.getFullNameHeaderFilter().click();
-                break;
-            case "Country":
-                homePageFilterRecordsPageAction.getCountryHeaderFilter().click();
-                break;
+        if (header.equals("Full Name")) {
+            homePageFilterRecordsPageAction.getFullNameHeaderFilter().click();
+        } else if (header.equals("Country")) {
+            homePageFilterRecordsPageAction.getCountryHeaderFilter().click();
         }
     }
 
@@ -174,10 +171,5 @@ public class HomePageFilterRecordsPageSteps {
     @And("user enter the {string} to filter")
     public void userEnterTheToFilter(String value) {
         homePageFilterRecordsPageAction.getTableHeaderFilterFullNameField().sendKeys(value);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 }

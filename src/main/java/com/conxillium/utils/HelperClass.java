@@ -10,7 +10,7 @@ public class HelperClass {
 
     private static HelperClass helperClass;
     private static WebDriver driver;
-    public final static int TIMEOUT = 10;
+    public final static int TIMEOUT = 2;
 
     private HelperClass() {
         WebDriverManager.chromedriver().setup();

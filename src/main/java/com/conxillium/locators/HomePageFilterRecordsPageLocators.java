@@ -1,5 +1,6 @@
 package com.conxillium.locators;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -50,4 +51,7 @@ public class HomePageFilterRecordsPageLocators {
 
     @FindBy(id = "filterText")
     public WebElement tableHeaderFilterFullNameField;
+
+    @FindBy(xpath = "(//div[@comp-id=\"479\"])[2]")
+    public WebElement lastTableRow;
 }

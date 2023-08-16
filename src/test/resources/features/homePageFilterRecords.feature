@@ -7,14 +7,14 @@ Feature: Home Page Filter Table Tests
     And user clicks on Login button
     And user is able to login
 
-  Scenario: Home page content verification
+  Scenario: Verify home page default values and fields
     Then user can see the navigation bar with values
     And user can see the View Data title by default
     And user can see Filter Full Name and Filter Country fields
     And user can see Filter and Add New buttons
     And user can see the Data Table
 
-  Scenario Outline: Navigation bar verification
+  Scenario Outline: Verify home page navigation bar behaviour when clicked on navigation items
     When user click on "<item>" on navigation bar
     Then user is navigated to "<page>" page by "<item>"
     Examples:
@@ -24,7 +24,7 @@ Feature: Home Page Filter Table Tests
       | Add             | add  |
       | View            | view |
 
-  Scenario Outline: Filter table data with Full Name and Country verification
+  Scenario Outline: Verify Filter option in the table data using Full Name and Country filter fields
     When user enter "<value>" to Filter "<category>" filed
     And click on Filter button
     Then user "<value>" is filtered in the table
@@ -35,7 +35,7 @@ Feature: Home Page Filter Table Tests
       | Russian Federation | country  |
       | Kuwait             | country  |
 
-  Scenario Outline: Filter table data using Name column header
+  Scenario Outline: Verify Filter option in the table data using Full Name column and Country column of the header
     When user selects "<header>" header filter button
     And user selects "<option>" option
     And user enter the "<value>" to filter

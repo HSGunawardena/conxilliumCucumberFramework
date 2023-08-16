@@ -9,7 +9,7 @@ Feature: Login Page Tests
     And user can see Username and Password fields
     And user can see Login button
 
-  Scenario Outline: Login to the system with incorrect credentials
+  Scenario Outline: Verify Login to the system with invalid credentials
     When user enter "<username>" and "<password>"
     And user clicks on Login button
     Then user is not able to login
@@ -19,7 +19,7 @@ Feature: Login Page Tests
       | admin    | Admin123 |
       | 2343     | 2342345  |
 
-  Scenario Outline: Login to the system with correct credentials
+  Scenario Outline: Verify Login to the system with valid credentials
     When user enter "<username>" and "<password>"
     And user clicks on Login button
     Then user is able to login

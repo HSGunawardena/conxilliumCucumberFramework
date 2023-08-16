@@ -28,84 +28,77 @@ public class AddNewRecordPageSteps {
 
     @Then("user can see the {string} field and it's empty")
     public void userCanSeeTheFieldAndItSEmpty(String field) {
-        switch (field) {
-            case "Full Name":
-                Assert.assertTrue(
-                        "Full Name field is not displayed",
-                        addNewRecordPageAction.getFullName().isDisplayed()
-                );
-                Assert.assertTrue(
-                        "Full Name field is not empty",
-                        addNewRecordPageAction.getFullName().getAttribute("value").isEmpty()
-                );
-                break;
-            case "Age":
-                Assert.assertTrue(
-                        "Age field is not displayed",
-                        addNewRecordPageAction.getAge().isDisplayed()
-                );
-                Assert.assertTrue(
-                        "Age field is not empty",
-                        addNewRecordPageAction.getAge().getAttribute("value").isEmpty()
-                );
-                break;
-            case "Address":
-                Assert.assertTrue(
-                        "Address field is not displayed",
-                        addNewRecordPageAction.getAddress().isDisplayed()
-                );
-                Assert.assertTrue(
-                        "Address field is not empty",
-                        addNewRecordPageAction.getAddress().getAttribute("value").isEmpty()
-                );
-                break;
-            case "Birthday":
-                Assert.assertTrue(
-                        "Birthday field is not displayed",
-                        addNewRecordPageAction.getBirthday().isDisplayed()
-                );
-                Assert.assertTrue(
-                        "Birthday field is not empty",
-                        addNewRecordPageAction.getBirthday().getAttribute("value").isEmpty()
-                );
-                break;
-            case "Country":
-                Assert.assertTrue(
-                        "Country field is not displayed",
-                        addNewRecordPageAction.getCountry().isDisplayed()
-                );
-                Assert.assertTrue(
-                        "Country field is not empty",
-                        addNewRecordPageAction.getCountry().getAttribute("value").isEmpty()
-                );
-                break;
-            case "Expertise":
-                List<WebElement> expertiseElements = addNewRecordPageAction.getExpertise();
-                for (WebElement expertise : expertiseElements) {
-                    Assert.assertTrue(expertise.isDisplayed());
-                    Assert.assertFalse(expertise.isSelected());
-                }
-                break;
-            case "Gender":
-                List<WebElement> genderElements = addNewRecordPageAction.getGender();
-                for (WebElement gender : genderElements) {
-                    Assert.assertTrue(gender.isDisplayed());
-                    Assert.assertFalse(gender.isSelected());
-                }
-                break;
+        if (field.equals("Full Name")) {
+            Assert.assertTrue(
+                    "Full Name field is not displayed",
+                    addNewRecordPageAction.getFullName().isDisplayed()
+            );
+            Assert.assertTrue(
+                    "Full Name field is not empty",
+                    addNewRecordPageAction.getFullName().getAttribute("value").isEmpty()
+            );
+        } else if (field.equals("Age")) {
+            Assert.assertTrue(
+                    "Age field is not displayed",
+                    addNewRecordPageAction.getAge().isDisplayed()
+            );
+            Assert.assertTrue(
+                    "Age field is not empty",
+                    addNewRecordPageAction.getAge().getAttribute("value").isEmpty()
+            );
+        }
+        if (field.equals("Address")) {
+            Assert.assertTrue(
+                    "Address field is not displayed",
+                    addNewRecordPageAction.getAddress().isDisplayed()
+            );
+            Assert.assertTrue(
+                    "Address field is not empty",
+                    addNewRecordPageAction.getAddress().getAttribute("value").isEmpty()
+            );
+        }
+        if (field.equals("Birthday")) {
+            Assert.assertTrue(
+                    "Birthday field is not displayed",
+                    addNewRecordPageAction.getBirthday().isDisplayed()
+            );
+            Assert.assertTrue(
+                    "Birthday field is not empty",
+                    addNewRecordPageAction.getBirthday().getAttribute("value").isEmpty()
+            );
+        }
+        if (field.equals("Country")) {
+            Assert.assertTrue(
+                    "Country field is not displayed",
+                    addNewRecordPageAction.getCountry().isDisplayed()
+            );
+            Assert.assertTrue(
+                    "Country field is not empty",
+                    addNewRecordPageAction.getCountry().getAttribute("value").isEmpty()
+            );
+        }
+        if (field.equals("Expertise")) {
+            List<WebElement> expertiseElements = addNewRecordPageAction.getExpertise();
+            for (WebElement expertise : expertiseElements) {
+                Assert.assertTrue(expertise.isDisplayed());
+                Assert.assertFalse(expertise.isSelected());
+            }
+        }
+        if (field.equals("Gender")) {
+            List<WebElement> genderElements = addNewRecordPageAction.getGender();
+            for (WebElement gender : genderElements) {
+                Assert.assertTrue(gender.isDisplayed());
+                Assert.assertFalse(gender.isSelected());
+            }
         }
     }
 
     @Then("user can see the {string} button")
     public void userCanSeeTheButton(String button) {
-        switch (button) {
-            case "Submit":
-                Assert.assertTrue(addNewRecordPageAction.getSubmitButton().isDisplayed());
-                break;
-            case "Reset":
-                Assert.assertTrue(addNewRecordPageAction.getResetButton().isDisplayed());
-                break;
-        }
+        if (button.equals("Submit")) {
+            Assert.assertTrue(addNewRecordPageAction.getSubmitButton().isDisplayed());
+        } else if (button.equals("Reset"))
+            Assert.assertTrue(addNewRecordPageAction.getResetButton().isDisplayed());
     }
 
     @When("user fill the {string}, {string}, {string}, {string}, {string}, {string} and {string}")
@@ -123,38 +116,29 @@ public class AddNewRecordPageSteps {
         addNewRecordPageAction.getBirthday().sendKeys(birthday);
         addNewRecordPageAction.setCountry(country);
         List<WebElement> expertiseElements = addNewRecordPageAction.getExpertise();
-        switch (expertise) {
-            case "ANGULAR":
-                expertiseElements.get(0).click();
-                expertiseElements.get(0).isSelected();
-                break;
-            case "JAVA":
-                expertiseElements.get(1).click();
-                expertiseElements.get(1).isSelected();
-                break;
-            case "C#":
-                expertiseElements.get(2).click();
-                expertiseElements.get(2).isSelected();
-                break;
-            case "GIT":
-                expertiseElements.get(3).click();
-                expertiseElements.get(3).isSelected();
-                break;
-            case "HTML":
-                expertiseElements.get(4).click();
-                expertiseElements.get(4).isSelected();
-                break;
+        if (expertise.equals("ANGULAR")) {
+            expertiseElements.get(0).click();
+            expertiseElements.get(0).isSelected();
+        } else if (expertise.equals("JAVA")) {
+            expertiseElements.get(1).click();
+            expertiseElements.get(1).isSelected();
+        } else if (expertise.equals("C#")) {
+            expertiseElements.get(2).click();
+            expertiseElements.get(2).isSelected();
+        } else if (expertise.equals("GIT")) {
+            expertiseElements.get(3).click();
+            expertiseElements.get(3).isSelected();
+        } else if (expertise.equals("HTML")) {
+            expertiseElements.get(4).click();
+            expertiseElements.get(4).isSelected();
         }
         List<WebElement> genderElements = addNewRecordPageAction.getGender();
-        switch (gender) {
-            case "MALE":
-                genderElements.get(0).click();
-                genderElements.get(0).isSelected();
-                break;
-            case "FEMALE":
-                genderElements.get(1).click();
-                genderElements.get(1).isSelected();
-                break;
+        if (gender.equals("MALE")) {
+            genderElements.get(0).click();
+            genderElements.get(0).isSelected();
+        } else if (gender.equals("FEMALE")) {
+            genderElements.get(1).click();
+            genderElements.get(1).isSelected();
         }
     }
 
