@@ -1,6 +1,6 @@
 package com.conxillium.stepDefs;
 
-import com.conxillium.pages.AddNewRecordPageAction;
+import com.conxillium.pages.AddNewRecordPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -13,7 +13,7 @@ import java.util.List;
 import static com.conxillium.utils.HelperClass.getDriver;
 
 public class AddNewRecordPageSteps {
-    AddNewRecordPageAction addNewRecordPageAction = new AddNewRecordPageAction();
+    AddNewRecordPage addNewRecordPage = new AddNewRecordPage();
 
     @And("user is on Add Data page")
     public void userIsOnAddDataPage() {
@@ -21,7 +21,7 @@ public class AddNewRecordPageSteps {
                 "URL does not contain /AddressManager/add",
                 getDriver().getCurrentUrl().contains("/AddressManager/add")
         );
-        Assert.assertTrue(addNewRecordPageAction.getPageTitle().getText().contains("Add Data"));
+        Assert.assertTrue(addNewRecordPage.getPageTitle().getText().contains("Add Data"));
     }
 
     @Then("user can see the {string} field and it's empty")
@@ -29,61 +29,61 @@ public class AddNewRecordPageSteps {
         if (field.equals("Full Name")) {
             Assert.assertTrue(
                     "Full Name field is not displayed",
-                    addNewRecordPageAction.getFullName().isDisplayed()
+                    addNewRecordPage.getFullName().isDisplayed()
             );
             Assert.assertTrue(
                     "Full Name field is not empty",
-                    addNewRecordPageAction.getFullName().getAttribute("value").isEmpty()
+                    addNewRecordPage.getFullName().getAttribute("value").isEmpty()
             );
         } else if (field.equals("Age")) {
             Assert.assertTrue(
                     "Age field is not displayed",
-                    addNewRecordPageAction.getAge().isDisplayed()
+                    addNewRecordPage.getAge().isDisplayed()
             );
             Assert.assertTrue(
                     "Age field is not empty",
-                    addNewRecordPageAction.getAge().getAttribute("value").isEmpty()
+                    addNewRecordPage.getAge().getAttribute("value").isEmpty()
             );
         }
         if (field.equals("Address")) {
             Assert.assertTrue(
                     "Address field is not displayed",
-                    addNewRecordPageAction.getAddress().isDisplayed()
+                    addNewRecordPage.getAddress().isDisplayed()
             );
             Assert.assertTrue(
                     "Address field is not empty",
-                    addNewRecordPageAction.getAddress().getAttribute("value").isEmpty()
+                    addNewRecordPage.getAddress().getAttribute("value").isEmpty()
             );
         }
         if (field.equals("Birthday")) {
             Assert.assertTrue(
                     "Birthday field is not displayed",
-                    addNewRecordPageAction.getBirthday().isDisplayed()
+                    addNewRecordPage.getBirthday().isDisplayed()
             );
             Assert.assertTrue(
                     "Birthday field is not empty",
-                    addNewRecordPageAction.getBirthday().getAttribute("value").isEmpty()
+                    addNewRecordPage.getBirthday().getAttribute("value").isEmpty()
             );
         }
         if (field.equals("Country")) {
             Assert.assertTrue(
                     "Country field is not displayed",
-                    addNewRecordPageAction.getCountry().isDisplayed()
+                    addNewRecordPage.getCountry().isDisplayed()
             );
             Assert.assertTrue(
                     "Country field is not empty",
-                    addNewRecordPageAction.getCountry().getAttribute("value").isEmpty()
+                    addNewRecordPage.getCountry().getAttribute("value").isEmpty()
             );
         }
         if (field.equals("Expertise")) {
-            List<WebElement> expertiseElements = addNewRecordPageAction.getExpertise();
+            List<WebElement> expertiseElements = addNewRecordPage.getExpertise();
             for (WebElement expertise : expertiseElements) {
                 Assert.assertTrue(expertise.isDisplayed());
                 Assert.assertFalse(expertise.isSelected());
             }
         }
         if (field.equals("Gender")) {
-            List<WebElement> genderElements = addNewRecordPageAction.getGender();
+            List<WebElement> genderElements = addNewRecordPage.getGender();
             for (WebElement gender : genderElements) {
                 Assert.assertTrue(gender.isDisplayed());
                 Assert.assertFalse(gender.isSelected());
@@ -94,9 +94,9 @@ public class AddNewRecordPageSteps {
     @Then("user can see the {string} button")
     public void userCanSeeTheButton(String button) {
         if (button.equals("Submit")) {
-            Assert.assertTrue(addNewRecordPageAction.getSubmitButton().isDisplayed());
+            Assert.assertTrue(addNewRecordPage.getSubmitButton().isDisplayed());
         } else if (button.equals("Reset"))
-            Assert.assertTrue(addNewRecordPageAction.getResetButton().isDisplayed());
+            Assert.assertTrue(addNewRecordPage.getResetButton().isDisplayed());
     }
 
     @When("user fill the {string}, {string}, {string}, {string}, {string}, {string} and {string}")
@@ -108,12 +108,12 @@ public class AddNewRecordPageSteps {
             String country,
             String expertise,
             String gender) {
-        addNewRecordPageAction.getFullName().sendKeys(fullName);
-        addNewRecordPageAction.getAge().sendKeys(age);
-        addNewRecordPageAction.getAddress().sendKeys(address);
-        addNewRecordPageAction.getBirthday().sendKeys(birthday);
-        addNewRecordPageAction.setCountry(country);
-        List<WebElement> expertiseElements = addNewRecordPageAction.getExpertise();
+        addNewRecordPage.getFullName().sendKeys(fullName);
+        addNewRecordPage.getAge().sendKeys(age);
+        addNewRecordPage.getAddress().sendKeys(address);
+        addNewRecordPage.getBirthday().sendKeys(birthday);
+        addNewRecordPage.setCountry(country);
+        List<WebElement> expertiseElements = addNewRecordPage.getExpertise();
         if (expertise.equals("ANGULAR")) {
             expertiseElements.get(0).click();
             expertiseElements.get(0).isSelected();
@@ -130,7 +130,7 @@ public class AddNewRecordPageSteps {
             expertiseElements.get(4).click();
             expertiseElements.get(4).isSelected();
         }
-        List<WebElement> genderElements = addNewRecordPageAction.getGender();
+        List<WebElement> genderElements = addNewRecordPage.getGender();
         if (gender.equals("MALE")) {
             genderElements.get(0).click();
             genderElements.get(0).isSelected();
@@ -142,37 +142,37 @@ public class AddNewRecordPageSteps {
 
     @And("user clicks on Reset button")
     public void userClicksOnResetButton() {
-        addNewRecordPageAction.getResetButton().click();
+        addNewRecordPage.getResetButton().click();
     }
 
     @Then("all the fields should be reset to default values")
     public void allTheFieldsShouldBeResetToDefaultValues() {
         Assert.assertTrue(
                 "Full Name field is not reset",
-                addNewRecordPageAction.getFullName().getAttribute("value").isEmpty()
+                addNewRecordPage.getFullName().getAttribute("value").isEmpty()
         );
         Assert.assertTrue(
                 "Age field is not reset",
-                addNewRecordPageAction.getAge().getAttribute("value").isEmpty()
+                addNewRecordPage.getAge().getAttribute("value").isEmpty()
         );
         Assert.assertTrue(
                 "Address field is not reset",
-                addNewRecordPageAction.getAddress().getAttribute("value").isEmpty()
+                addNewRecordPage.getAddress().getAttribute("value").isEmpty()
         );
         Assert.assertTrue(
                 "Birthday field is not reset",
-                addNewRecordPageAction.getBirthday().getAttribute("value").isEmpty()
+                addNewRecordPage.getBirthday().getAttribute("value").isEmpty()
         );
         Assert.assertTrue(
                 "Country field is not reset",
-                addNewRecordPageAction.getCountry().getAttribute("value").isEmpty()
+                addNewRecordPage.getCountry().getAttribute("value").isEmpty()
         );
-        List<WebElement> expertiseElements = addNewRecordPageAction.getExpertise();
+        List<WebElement> expertiseElements = addNewRecordPage.getExpertise();
         for (WebElement expertise : expertiseElements) {
             Assert.assertTrue(expertise.isDisplayed());
             Assert.assertFalse(expertise.isSelected());
         }
-        List<WebElement> genderElements = addNewRecordPageAction.getGender();
+        List<WebElement> genderElements = addNewRecordPage.getGender();
         for (WebElement gender : genderElements) {
             Assert.assertTrue(gender.isDisplayed());
             Assert.assertFalse(gender.isSelected());
@@ -181,18 +181,18 @@ public class AddNewRecordPageSteps {
 
     @And("user clicks on Submit button")
     public void userClicksOnSubmitButton() {
-        addNewRecordPageAction.getSubmitButton().click();
+        addNewRecordPage.getSubmitButton().click();
     }
 
     @Then("the submission should be unsuccessful")
     public void theSubmissionShouldBeUnsuccessful() {
-        String classValues = addNewRecordPageAction.getAddress().getAttribute("class");
+        String classValues = addNewRecordPage.getAddress().getAttribute("class");
         Assert.assertTrue("Address field error was not shown", classValues.contains("form-field--error"));
     }
 
     @Then("the address field error is not available")
     public void theAddressFieldErrorIsNotAvailable() {
-        String classValues = addNewRecordPageAction.getAddress().getAttribute("class");
+        String classValues = addNewRecordPage.getAddress().getAttribute("class");
         Assert.assertFalse("Address field error was shown", classValues.contains("form-field--error"));
     }
 }

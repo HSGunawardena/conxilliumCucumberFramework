@@ -8,7 +8,7 @@ import java.util.List;
 
 import static com.conxillium.utils.HelperClass.getDriver;
 
-public class AddNewRecordPageAction {
+public class AddNewRecordPage {
     private final By pageTitle = By.tagName("h2");
     private final By fullName = By.id("fullName");
     private final By age = By.id("age");

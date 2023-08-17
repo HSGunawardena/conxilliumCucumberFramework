@@ -1,6 +1,6 @@
 package com.conxillium.stepDefs;
 
-import com.conxillium.pages.HomePageFilterRecordsPageAction;
+import com.conxillium.pages.HomePageFilterRecordsPage;
 import com.conxillium.pages.MapPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -16,34 +16,34 @@ import java.util.List;
 import static com.conxillium.utils.HelperClass.getDriver;
 
 public class HomePageFilterRecordsPageSteps {
-    HomePageFilterRecordsPageAction homePageFilterRecordsPageAction = new HomePageFilterRecordsPageAction();
+    HomePageFilterRecordsPage homePageFilterRecordsPage = new HomePageFilterRecordsPage();
     MapPage mapPage = new MapPage();
 
     @And("user clicks on Add New button")
     public void userClicksOnAddNewButton() {
-        homePageFilterRecordsPageAction.getAddNewButton().click();
+        homePageFilterRecordsPage.getAddNewButton().click();
     }
 
     @Then("the new record with {string} is created")
     public void theNewRecordWithIsCreated(String fullName) {
-        Assert.assertTrue("User " + fullName + " was not created", homePageFilterRecordsPageAction.getDataTable()
+        Assert.assertTrue("User " + fullName + " was not created", homePageFilterRecordsPage.getDataTable()
                 .getText().contains(fullName));
     }
 
     @Then("user can see the View Data title by default")
     public void userCanSeeTheViewDataTitleByDefault() {
-        Assert.assertTrue(homePageFilterRecordsPageAction.getPageTitle().getText().contains("View Data"));
+        Assert.assertTrue(homePageFilterRecordsPage.getPageTitle().getText().contains("View Data"));
     }
 
     @And("user can see Filter Full Name and Filter Country fields")
     public void userCanSeeFilterFullNameAndFilterCountryFields() {
         Assert.assertTrue(
                 "Filter Full Name field was not displayed",
-                homePageFilterRecordsPageAction.getFilterFullNameField().isDisplayed()
+                homePageFilterRecordsPage.getFilterFullNameField().isDisplayed()
         );
         Assert.assertTrue(
                 "Filter Country field was not displayed",
-                homePageFilterRecordsPageAction.getFilterCountry().isDisplayed()
+                homePageFilterRecordsPage.getFilterCountry().isDisplayed()
         );
     }
 
@@ -51,11 +51,11 @@ public class HomePageFilterRecordsPageSteps {
     public void userCanSeeFilterAndAddNewButtons() {
         Assert.assertTrue(
                 "Filter button was not displayed",
-                homePageFilterRecordsPageAction.getFilterButton().isDisplayed()
+                homePageFilterRecordsPage.getFilterButton().isDisplayed()
         );
         Assert.assertTrue(
                 "Add New button was not displayed",
-                homePageFilterRecordsPageAction.getAddNewButton().isDisplayed()
+                homePageFilterRecordsPage.getAddNewButton().isDisplayed()
         );
     }
 
@@ -63,19 +63,19 @@ public class HomePageFilterRecordsPageSteps {
     public void userCanSeeTheNavigationBarWithValues() {
         Assert.assertTrue(
                 "Address Manager navigation bar text was not visible",
-                homePageFilterRecordsPageAction.getNavigationBarAddressManagerTitle().isDisplayed()
+                homePageFilterRecordsPage.getNavigationBarAddressManagerTitle().isDisplayed()
         );
         Assert.assertTrue(
                 "Home navigation bar text was not visible",
-                homePageFilterRecordsPageAction.getNavigationBarHome().isDisplayed()
+                homePageFilterRecordsPage.getNavigationBarHome().isDisplayed()
         );
         Assert.assertTrue(
                 "Add navigation bar text was not visible",
-                homePageFilterRecordsPageAction.getNavigationBarAdd().isDisplayed()
+                homePageFilterRecordsPage.getNavigationBarAdd().isDisplayed()
         );
         Assert.assertTrue(
                 "View navigation bar text was not visible",
-                homePageFilterRecordsPageAction.getNavigationBarView().isDisplayed()
+                homePageFilterRecordsPage.getNavigationBarView().isDisplayed()
         );
     }
 
@@ -83,32 +83,32 @@ public class HomePageFilterRecordsPageSteps {
     public void userCanSeeTheDataTable() {
         Assert.assertTrue(
                 "User Data Table was not displayed",
-                homePageFilterRecordsPageAction.getDataTable().isDisplayed()
+                homePageFilterRecordsPage.getDataTable().isDisplayed()
         );
     }
 
     @When("user click on {string} on navigation bar")
     public void userClickOnOnNavigationBar(String item) {
         if (item.equals("Address Manager")) {
-            homePageFilterRecordsPageAction.getNavigationBarAddressManagerTitle().click();
+            homePageFilterRecordsPage.getNavigationBarAddressManagerTitle().click();
             Assert.assertTrue(
                     "User was not taken to Home page by" + item,
                     getDriver().getCurrentUrl().contains("/AddressManager/view")
             );
         } else if (item.equals("Home")) {
-            homePageFilterRecordsPageAction.getNavigationBarHome().click();
+            homePageFilterRecordsPage.getNavigationBarHome().click();
             Assert.assertTrue(
                     "User was not taken to Home page by" + item,
                     getDriver().getCurrentUrl().contains("/AddressManager/view")
             );
         } else if (item.equals("Add")) {
-            homePageFilterRecordsPageAction.getNavigationBarAdd().click();
+            homePageFilterRecordsPage.getNavigationBarAdd().click();
             Assert.assertTrue(
                     "User was not taken to Add page by" + item,
                     getDriver().getCurrentUrl().contains("/AddressManager/add")
             );
         } else if (item.equals("View")) {
-            homePageFilterRecordsPageAction.getNavigationBarView().click();
+            homePageFilterRecordsPage.getNavigationBarView().click();
             Assert.assertTrue(
                     "User was not taken to View page by" + item,
                     getDriver().getCurrentUrl().contains("/AddressManager/view")
@@ -126,27 +126,27 @@ public class HomePageFilterRecordsPageSteps {
 
     @When("user enter {string} to Filter {string} filed")
     public void userEnterToFilterFiled(String value, String category) {
-        final int rowCount = homePageFilterRecordsPageAction.getDataTableRows().size();
+        final int rowCount = homePageFilterRecordsPage.getDataTableRows().size();
         Assert.assertTrue(rowCount == 10);
         if (category.equals("name")) {
-            homePageFilterRecordsPageAction.getFilterFullNameField().sendKeys(value);
+            homePageFilterRecordsPage.getFilterFullNameField().sendKeys(value);
         } else if (category.equals("country")) {
-            homePageFilterRecordsPageAction.getFilterCountry().sendKeys(value);
+            homePageFilterRecordsPage.getFilterCountry().sendKeys(value);
         }
     }
 
     @And("click on Filter button")
     public void clickOnFilterButton() {
-        homePageFilterRecordsPageAction.getFilterButton().click();
+        homePageFilterRecordsPage.getFilterButton().click();
     }
 
     @Then("user {string} is filtered in the table")
     public void userIsFilteredInTheTable(String value) {
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(3));
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(homePageFilterRecordsPageAction.getTableLastRowElement()));
-        final int rowCount = homePageFilterRecordsPageAction.getDataTableRows().size();
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(homePageFilterRecordsPage.getTableLastRowElement()));
+        final int rowCount = homePageFilterRecordsPage.getDataTableRows().size();
         Assert.assertTrue("Row count was not 1", rowCount == 1);
-        List<WebElement> getNames = homePageFilterRecordsPageAction.getDataTableRows();
+        List<WebElement> getNames = homePageFilterRecordsPage.getDataTableRows();
         for (WebElement getName : getNames) {
             Assert.assertEquals(
                     "Correct name '" + value + "' was not filtered",
@@ -159,25 +159,25 @@ public class HomePageFilterRecordsPageSteps {
     @When("user selects {string} header filter button")
     public void userSelectsHeaderFilterButton(String header) {
         if (header.equals("Full Name")) {
-            homePageFilterRecordsPageAction.getFullNameHeaderFilter().click();
+            homePageFilterRecordsPage.getFullNameHeaderFilter().click();
         } else if (header.equals("Country")) {
-            homePageFilterRecordsPageAction.getCountryHeaderFilter().click();
+            homePageFilterRecordsPage.getCountryHeaderFilter().click();
         }
     }
 
     @And("user selects {string} option")
     public void userSelectsOption(String option) {
-        homePageFilterRecordsPageAction.selectFilterCriteria(option);
+        homePageFilterRecordsPage.selectFilterCriteria(option);
     }
 
     @And("user enter the {string} to filter")
     public void userEnterTheToFilter(String value) {
-        homePageFilterRecordsPageAction.getTableHeaderFilterFullNameField().sendKeys(value);
+        homePageFilterRecordsPage.getTableHeaderFilterFullNameField().sendKeys(value);
     }
 
     @When("user clicks on view map link")
     public void userClicksOnViewLink() {
-        List<WebElement> viewLinks = homePageFilterRecordsPageAction.getViewLink();
+        List<WebElement> viewLinks = homePageFilterRecordsPage.getViewLink();
         viewLinks.get(5).click();
     }
 

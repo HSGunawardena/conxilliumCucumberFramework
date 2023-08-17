@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 
 import static com.conxillium.utils.HelperClass.getDriver;
 
-public class LoginPageAction {
+public class LoginPage {
     private final By pageTitle = By.tagName("h1");
     private final By userName = By.name("username");
     private final By password = By.name("password");

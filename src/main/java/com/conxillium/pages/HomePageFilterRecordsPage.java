@@ -8,7 +8,7 @@ import java.util.List;
 
 import static com.conxillium.utils.HelperClass.getDriver;
 
-public class HomePageFilterRecordsPageAction {
+public class HomePageFilterRecordsPage {
     private final By pageTitle = By.tagName("h2");
     private final By addNewButton = By.xpath("//a[contains(text(), 'Add New')]");
     private final By filterButton = By.xpath("//input[@value='Filter']");

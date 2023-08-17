@@ -1,6 +1,6 @@
 package com.conxillium.stepDefs;
 
-import com.conxillium.pages.LoginPageAction;
+import com.conxillium.pages.LoginPage;
 import com.conxillium.utils.HelperClass;
 import com.conxillium.utils.PropertyFileReader;
 import io.cucumber.java.en.Given;
@@ -12,7 +12,7 @@ import static com.conxillium.utils.HelperClass.getDriver;
 
 public class LoginPageSteps {
     PropertyFileReader propertyFileReader = new PropertyFileReader();
-    LoginPageAction loginPageAction = new LoginPageAction();
+    LoginPage loginPage = new LoginPage();
 
     @Given("user is on the Login page")
     public void userIsOnTheLoginPage() {
@@ -22,30 +22,30 @@ public class LoginPageSteps {
 
     @Then("user can see the Welcome title by default")
     public void userCanSeeTheWelcomeTitleByDefault() {
-        Assert.assertTrue(loginPageAction.getPageTitle().getText().contains("Welcome"));
+        Assert.assertTrue(loginPage.getPageTitle().getText().contains("Welcome"));
     }
 
     @Then("user can see Username and Password fields")
     public void userCanSeeUsernameAndPasswordFields() {
-        Assert.assertTrue(loginPageAction.getUserNameField().isDisplayed());
-        Assert.assertTrue(loginPageAction.getPasswordField().isDisplayed());
+        Assert.assertTrue(loginPage.getUserNameField().isDisplayed());
+        Assert.assertTrue(loginPage.getPasswordField().isDisplayed());
     }
 
     @Then("user can see Login button")
     public void userCanSeeLoginButton() {
-        Assert.assertTrue(loginPageAction.getLoginButton().isDisplayed());
+        Assert.assertTrue(loginPage.getLoginButton().isDisplayed());
 
     }
 
     @When("user enter {string} and {string}")
     public void userEnterUsernameAndPassword(String username, String password) {
-        loginPageAction.getUserNameField().sendKeys(username);
-        loginPageAction.getPasswordField().sendKeys(password);
+        loginPage.getUserNameField().sendKeys(username);
+        loginPage.getPasswordField().sendKeys(password);
     }
 
     @When("user clicks on Login button")
     public void userClicksOnLoginButton() {
-        loginPageAction.getLoginButton().click();
+        loginPage.getLoginButton().click();
     }
 
     @Then("user is not able to login")
