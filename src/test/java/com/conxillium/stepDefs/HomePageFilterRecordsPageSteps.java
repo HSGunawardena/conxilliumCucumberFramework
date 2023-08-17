@@ -1,6 +1,7 @@
 package com.conxillium.stepDefs;
 
 import com.conxillium.pages.HomePageFilterRecordsPageAction;
+import com.conxillium.pages.MapPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -16,6 +17,7 @@ import static com.conxillium.utils.HelperClass.getDriver;
 
 public class HomePageFilterRecordsPageSteps {
     HomePageFilterRecordsPageAction homePageFilterRecordsPageAction = new HomePageFilterRecordsPageAction();
+    MapPage mapPage = new MapPage();
 
     @And("user clicks on Add New button")
     public void userClicksOnAddNewButton() {
@@ -171,5 +173,24 @@ public class HomePageFilterRecordsPageSteps {
     @And("user enter the {string} to filter")
     public void userEnterTheToFilter(String value) {
         homePageFilterRecordsPageAction.getTableHeaderFilterFullNameField().sendKeys(value);
+    }
+
+    @When("user clicks on view map link")
+    public void userClicksOnViewLink() {
+        List<WebElement> viewLinks = homePageFilterRecordsPageAction.getViewLink();
+        viewLinks.get(5).click();
+    }
+
+    @Then("user is taken to map page and map is shown")
+    public void userIsTakenToDetailsPage() {
+        Assert.assertEquals(
+                "User was not navigated to correct details page",
+                true,
+                getDriver().getCurrentUrl().contains("/map/")
+        );
+        Assert.assertFalse(
+                "Page should not contain 404 Error",
+                mapPage.getPageTitle().getText().contains("404")
+        );
     }
 }

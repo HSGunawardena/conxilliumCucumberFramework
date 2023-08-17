@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
         glue = {"com/conxillium/stepDefs"},
         monochrome = true,
         plugin = {"pretty", "html:target/HtmlReports.html"},
-        tags = "@Regression"
+        tags = "@Test"
 )
 
 public class TestRunner {

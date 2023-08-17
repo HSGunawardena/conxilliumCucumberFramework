@@ -25,6 +25,7 @@ public class HomePageFilterRecordsPageAction {
     private final By lastTableRow = By.xpath("(//div[@row-id='9'])[2]");
     private final By filterCriteria = By.id("filterType");
     private final By tableHeaderFilterFullNameField = By.id("filterText");
+    private final By viewLink = By.linkText("View");
 
     public WebElement getPageTitle() {
         return getDriver().findElement(this.pageTitle);
@@ -93,5 +94,9 @@ public class HomePageFilterRecordsPageAction {
 
     public WebElement getTableHeaderFilterFullNameField() {
         return getDriver().findElement(this.tableHeaderFilterFullNameField);
+    }
+
+    public List<WebElement> getViewLink(){
+        return getDriver().findElements(this.viewLink);
     }
 }

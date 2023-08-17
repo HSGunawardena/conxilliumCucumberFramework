@@ -13,7 +13,7 @@ Feature: Home Page Filter Table Tests
     And user can see Filter Full Name and Filter Country fields
     And user can see Filter and Add New buttons
     And user can see the Data Table
-
+@Test
   Scenario Outline: Verify home page navigation bar behaviour when clicked on navigation items
     When user click on "<item>" on navigation bar
     Then user is navigated to "<page>" page by "<item>"
@@ -46,3 +46,7 @@ Feature: Home Page Filter Table Tests
       | Full Name | equals     | Hester Roberts |
       | Country   | startsWith | Un             |
       | Country   | endsWith   | y              |
+@Test
+  Scenario: Verify the view link of each raw of the table navigates to correct details page
+    When user clicks on view map link
+    Then user is taken to map page and map is shown

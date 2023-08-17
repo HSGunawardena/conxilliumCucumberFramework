@@ -1,5 +1,5 @@
 @Smoke @Regression @NewRecords
-Feature: Add New Records
+Feature: Add New Records Page Tests
 
   Background:
     Given user is on the Login page
@@ -36,14 +36,14 @@ Feature: Add New Records
     Examples:
       | fullName           | age | address | birthday   | country   | expertise | gender |
       | Saliya Gunawardena | 34  |         | 1991-10-31 | Sri Lanka | JAVA      | MALE   |
-
+@Test
   Scenario Outline: Verify if the reset button clears the form
     When user fill the "<fullName>", "<age>", "<address>", "<birthday>", "<country>", "<expertise>" and "<gender>"
     And user clicks on Reset button
     Then all the fields should be reset to default values
     Examples:
       | fullName           | age | address      | birthday   | country   | expertise | gender |
-      | Saliya Gunawardena | 34  | 427, Gampaha | 1991-10-31 | Sri Lanka | JAVA      | MALE   |
+      | Saliya Gunawardena | 34  | 427, Gampaha | 1989-10-31 | Sri Lanka | JAVA      | MALE   |
 
   Scenario Outline: Verify submitting a new record
     When user fill the "<fullName>", "<age>", "<address>", "<birthday>", "<country>", "<expertise>" and "<gender>"
