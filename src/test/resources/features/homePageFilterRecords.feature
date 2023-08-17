@@ -35,7 +35,7 @@ Feature: Home Page Filter Table Tests
       | Russian Federation | country  |
       | Kuwait             | country  |
 
-  Scenario Outline: Verify Filter option in the table data using Full Name column and Country column of the header
+  Scenario Outline: Verify Filter option in the table data using Full Name column and Country column in the header
     When user selects "<header>" header filter button
     And user selects "<option>" option
     And user enter the "<value>" to filter

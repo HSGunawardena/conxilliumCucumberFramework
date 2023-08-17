@@ -1,13 +1,11 @@
 package com.conxillium.stepDefs;
 
-import com.conxillium.actions.AddNewRecordPageAction;
+import com.conxillium.pages.AddNewRecordPageAction;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 
 
 import java.util.List;

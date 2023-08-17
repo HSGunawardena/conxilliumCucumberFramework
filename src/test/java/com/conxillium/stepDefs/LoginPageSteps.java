@@ -1,6 +1,6 @@
 package com.conxillium.stepDefs;
 
-import com.conxillium.actions.LoginPageAction;
+import com.conxillium.pages.LoginPageAction;
 import com.conxillium.utils.HelperClass;
 import com.conxillium.utils.PropertyFileReader;
 import io.cucumber.java.en.Given;

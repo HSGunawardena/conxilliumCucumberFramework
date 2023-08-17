@@ -1,6 +1,6 @@
 package com.conxillium.stepDefs;
 
-import com.conxillium.actions.HomePageFilterRecordsPageAction;
+import com.conxillium.pages.HomePageFilterRecordsPageAction;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -141,7 +141,7 @@ public class HomePageFilterRecordsPageSteps {
     @Then("user {string} is filtered in the table")
     public void userIsFilteredInTheTable(String value) {
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(3));
-        wait.until(ExpectedConditions.invisibilityOf(homePageFilterRecordsPageAction.getLastTableRow()));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(homePageFilterRecordsPageAction.getTableLastRowElement()));
         final int rowCount = homePageFilterRecordsPageAction.getDataTableRows().size();
         Assert.assertTrue("Row count was not 1", rowCount == 1);
         List<WebElement> getNames = homePageFilterRecordsPageAction.getDataTableRows();
