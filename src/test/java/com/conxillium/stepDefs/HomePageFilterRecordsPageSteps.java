@@ -92,25 +92,25 @@ public class HomePageFilterRecordsPageSteps {
         if (item.equals("Address Manager")) {
             homePageFilterRecordsPage.getNavigationBarAddressManagerTitle().click();
             Assert.assertTrue(
-                    "User was not taken to Home page by" + item,
+                    "User was not taken to Home page by " + item,
                     getDriver().getCurrentUrl().contains("/AddressManager/view")
             );
         } else if (item.equals("Home")) {
             homePageFilterRecordsPage.getNavigationBarHome().click();
             Assert.assertTrue(
-                    "User was not taken to Home page by" + item,
+                    "User was not taken to Home page by " + item,
                     getDriver().getCurrentUrl().contains("/AddressManager/view")
             );
         } else if (item.equals("Add")) {
             homePageFilterRecordsPage.getNavigationBarAdd().click();
             Assert.assertTrue(
-                    "User was not taken to Add page by" + item,
+                    "User was not taken to Add page by " + item,
                     getDriver().getCurrentUrl().contains("/AddressManager/add")
             );
         } else if (item.equals("View")) {
             homePageFilterRecordsPage.getNavigationBarView().click();
             Assert.assertTrue(
-                    "User was not taken to View page by" + item,
+                    "User was not taken to View page by " + item,
                     getDriver().getCurrentUrl().contains("/AddressManager/view")
             );
         }

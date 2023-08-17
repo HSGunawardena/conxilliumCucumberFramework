@@ -36,7 +36,7 @@ Feature: Add New Records Page Tests
     Examples:
       | fullName           | age | address | birthday   | country   | expertise | gender |
       | Saliya Gunawardena | 34  |         | 1991-10-31 | Sri Lanka | JAVA      | MALE   |
-@Test
+
   Scenario Outline: Verify if the reset button clears the form
     When user fill the "<fullName>", "<age>", "<address>", "<birthday>", "<country>", "<expertise>" and "<gender>"
     And user clicks on Reset button
